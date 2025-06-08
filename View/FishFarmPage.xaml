@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="GestãoAgro.View.FishFarmPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <ScrollView>
+        <Grid
+            Padding="15"
+            ColumnSpacing="15"
+            RowSpacing="15"
+            VerticalOptions="Fill">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Label
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="3"
+                Padding="25"
+                FontFamily="poppinsb"
+                FontSize="20"
+                HorizontalOptions="Center"
+                Text=" 🐟  Serviços da Piscicultura " />
+            <Border
+                Grid.Row="1"
+                Grid.Column="0"
+                BackgroundColor="{AppThemeBinding Light=Black,
+                                                  Dark=White}"
+                HorizontalOptions="Start"
+                StrokeShape="RoundRectangle 20"
+                VerticalOptions="Start">
+                <StackLayout Padding="20" Spacing="10">
+                    <Label
+                        Padding="0,0,0,10"
+                        FontFamily="poppinsb"
+                        FontSize="16"
+                        HorizontalOptions="Center"
+                        Text=" 🌊 Controle de Tanques e Viveiros "
+                        TextColor="{AppThemeBinding Light=White,
+                                                    Dark=Black}" />
+                    <Label
+                        Padding="20,10,20,10"
+                        FontFamily="poppinsl"
+                        FontSize="14"
+                        HorizontalOptions="Start"
+                        Text="- Temperatura da água"
+                        TextColor="{AppThemeBinding Light=White,
+                                                    Dark=Black}" />
+                    <Label
+                        Padding="20,10,20,10"
+                        FontFamily="poppinsl"
+                        FontSize="14"
+                        HorizontalOptions="Start"
+                        Text="- Oxigenação"
+                        TextColor="{AppThemeBinding Light=White,
+                                                    Dark=Black}" />
+                    <Label
+                        Padding="20,10,20,10"
+                        FontFamily="poppinsl"
+                        FontSize="14"
+                        HorizontalOptions="Start"
+                        Text="- Nível da água"
+                        TextColor="{AppThemeBinding Light=White,
+                                                    Dark=Black}" />
+                </StackLayout>
+            </Border>
+            <Border
+                Grid.Row="1"
+                Grid.Column="1"
+                BackgroundColor="{AppThemeBinding Light=Black,
+                                                  Dark=White}"
+                HorizontalOptions="Start"
+                StrokeShape="RoundRectangle 20"
+                VerticalOptions="Start">
+                <StackLayout Padding="20" Spacing="10">
+                    <Label
+                        Padding="0,0,0,10"
+                        FontFamily="poppinsb"
+                        FontSize="16"
+                        HorizontalOptions="Center"
+                        Text=" 🐠 Gestão de Lotes de Peixes "
+                        TextColor="{AppThemeBinding Light=White,
+                                                    Dark=Black}" />
+                    <Label
+                        Padding="20,10,20,10"
+                        FontFamily="poppinsl"
+                        FontSize="14"
+                        HorizontalOptions="Start"
+                        Text="- Crescimento e fases"
+                        TextColor="{AppThemeBinding Light=White,
+                                                    Dark=Black}" />
+                    <Label
+                        Padding="20,10,20,10"
+                        FontFamily="poppinsl"
+                        FontSize="14"
+                        HorizontalOptions="Start"
+                        Text="- Planejamento alimentar"
+                        TextColor="{AppThemeBinding Light=White,
+                                                    Dark=Black}" />
+                    <Label
+                        Padding="20,10,20,10"
+                        FontFamily="poppinsl"
+                        FontSize="14"
+                        HorizontalOptions="Start"
+                        Text="- Monitoramento de doenças"
+                        TextColor="{AppThemeBinding Light=White,
+                                                    Dark=Black}" />
+                    <Label
+                        Padding="20,10,20,10"
+                        FontFamily="poppinsl"
+                        FontSize="14"
+                        HorizontalOptions="Start"
+                        Text="- Taxa de mortalidade"
+                        TextColor="{AppThemeBinding Light=White,
+                                                    Dark=Black}" />
+                </StackLayout>
+            </Border>
+            <Border
+                Grid.Row="1"
+                Grid.Column="2"
+                BackgroundColor="{AppThemeBinding Light=Black,
+                                                  Dark=White}"
+                HorizontalOptions="Start"
+                StrokeShape="RoundRectangle 20"
+                VerticalOptions="Start">
+                <StackLayout Padding="20" Spacing="10">
+                    <Label
+                        Padding="0,0,0,10"
+                        FontFamily="poppinsb"
+                        FontSize="16"
+                        HorizontalOptions="Center"
+                        Text=" 🍽️ Agenda de Alimentação "
+                        TextColor="{AppThemeBinding Light=White,
+                                                    Dark=Black}" />
+                    <Label
+                        Padding="20,10,20,10"
+                        FontFamily="poppinsl"
+                        FontSize="14"
+                        HorizontalOptions="Start"
+                        Text="- Lembretes por horário"
+                        TextColor="{AppThemeBinding Light=White,
+                                                    Dark=Black}" />
+                    <Label
+                        Padding="20,10,20,10"
+                        FontFamily="poppinsl"
+                        FontSize="14"
+                        HorizontalOptions="Start"
+                        Text="- Registro de tipos e quantidades de ração"
+                        TextColor="{AppThemeBinding Light=White,
+                                                    Dark=Black}" />
+                </StackLayout>
+            </Border>
+            <Border
+                Grid.Row="2"
+                Grid.Column="0"
+                BackgroundColor="{AppThemeBinding Light=Black,
+                                                  Dark=White}"
+                HorizontalOptions="Start"
+                StrokeShape="RoundRectangle 20"
+                VerticalOptions="Start">
+                <StackLayout Padding="20" Spacing="10">
+                    <Label
+                        Padding="0,0,0,10"
+                        FontFamily="poppinsb"
+                        FontSize="16"
+                        HorizontalOptions="Center"
+                        Text=" 📈 Análise de Produtividade "
+                        TextColor="{AppThemeBinding Light=White,
+                                                    Dark=Black}" />
+                    <Label
+                        Padding="20,10,20,10"
+                        FontFamily="poppinsl"
+                        FontSize="14"
+                        HorizontalOptions="Start"
+                        Text="- Conversão alimentar"
+                        TextColor="{AppThemeBinding Light=White,
+                                                    Dark=Black}" />
+                    <Label
+                        Padding="20,10,20,10"
+                        FontFamily="poppinsl"
+                        FontSize="14"
+                        HorizontalOptions="Start"
+                        Text="- Ganho de peso médio"
+                        TextColor="{AppThemeBinding Light=White,
+                                                    Dark=Black}" />
+                    <Label
+                        Padding="20,10,20,10"
+                        FontFamily="poppinsl"
+                        FontSize="14"
+                        HorizontalOptions="Start"
+                        Text="- Custo por kg de peixe"
+                        TextColor="{AppThemeBinding Light=White,
+                                                    Dark=Black}" />
+                </StackLayout>
+            </Border>
+            <Border
+                Grid.Row="2"
+                Grid.Column="1"
+                BackgroundColor="{AppThemeBinding Light=Black,
+                                                  Dark=White}"
+                HorizontalOptions="Start"
+                StrokeShape="RoundRectangle 20"
+                VerticalOptions="Start">
+                <StackLayout Padding="20" Spacing="10">
+                    <Label
+                        Padding="0,0,0,10"
+                        FontFamily="poppinsb"
+                        FontSize="16"
+                        HorizontalOptions="Center"
+                        Text=" ⚠️ Alertas Automatizados "
+                        TextColor="{AppThemeBinding Light=White,
+                                                    Dark=Black}" />
+                    <Label
+                        Padding="20,10,20,10"
+                        FontFamily="poppinsl"
+                        FontSize="14"
+                        HorizontalOptions="Start"
+                        Text="- Variações críticas detectadas"
+                        TextColor="{AppThemeBinding Light=White,
+                                                    Dark=Black}" />
+                    <Label
+                        Padding="20,10,20,10"
+                        FontFamily="poppinsl"
+                        FontSize="14"
+                        HorizontalOptions="Start"
+                        Text="- Integração com sensores"
+                        TextColor="{AppThemeBinding Light=White,
+                                                    Dark=Black}" />
+                    <Label
+                        Padding="20,10,20,10"
+                        FontFamily="poppinsl"
+                        FontSize="14"
+                        HorizontalOptions="Start"
+                        Text="- Ações recomendadas"
+                        TextColor="{AppThemeBinding Light=White,
+                                                    Dark=Black}" />
+                </StackLayout>
+            </Border>
+        </Grid>
+    </ScrollView>
+</ContentPage>

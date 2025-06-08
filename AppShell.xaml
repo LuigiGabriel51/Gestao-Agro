@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="GestãoAgro.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:forms="clr-namespace:GestaoAgro.View.Forms"
+    xmlns:local="clr-namespace:GestãoAgro.View"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    FlyoutBackgroundColor="{StaticResource Secondary}"
+    Shell.FlyoutBehavior="Locked"
+    Shell.ForegroundColor="Black">
+
+    <ShellContent
+        ContentTemplate="{DataTemplate local:MainPage}"
+        FlyoutItem.IsVisible="False"
+        Route="MainPage" />
+
+    <FlyoutItem
+        Title="Agropecuária"
+        FlyoutIcon="cow.png"
+        Route="CattleFarmPage">
+        <ShellContent ContentTemplate="{DataTemplate local:CattleFarmPage}" />
+    </FlyoutItem>
+    <FlyoutItem
+        Title="Piscicultura"
+        Icon="fish.png"
+        Route="FishFarmPage">
+        <ShellContent ContentTemplate="{DataTemplate local:FishFarmPage}" />
+    </FlyoutItem>
+    <FlyoutItem
+        Title="Plantio"
+        Icon="farm.png"
+        Route="FarmingPage">
+        <ShellContent ContentTemplate="{DataTemplate local:FarmingPage}" />
+    </FlyoutItem>
+    <FlyoutItem
+        Title="Vendas de produtos"
+        Icon="cart.png"
+        Route="CartPage">
+        <ShellContent ContentTemplate="{DataTemplate local:CartPage}" />
+    </FlyoutItem>
+    <FlyoutItem
+        Title="Controle de estoque"
+        Icon="stock.png"
+        Route="StockPage">
+        <ShellContent ContentTemplate="{DataTemplate local:StockPage}" />
+    </FlyoutItem>
+
+    <ShellContent
+        ContentTemplate="{DataTemplate forms:FormNewAnimal}"
+        FlyoutItem.IsVisible="False"
+        Shell.FlyoutBehavior="Disabled"
+        Shell.PresentationMode="Animated" />
+    <ShellContent
+        ContentTemplate="{DataTemplate forms:FormNewVaccine}"
+        FlyoutItem.IsVisible="False"
+        Shell.FlyoutBehavior="Disabled"
+        Shell.PresentationMode="Animated" />
+
+
+    <Shell.ItemTemplate>
+        <DataTemplate>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Image
+                    Margin="10,0,20,0"
+                    Aspect="AspectFit"
+                    HeightRequest="18"
+                    Source="{Binding FlyoutIcon}">
+                    <Image.Behaviors>
+                        <toolkit:IconTintColorBehavior TintColor="{AppThemeBinding Light=Black, Dark=White}" />
+                    </Image.Behaviors>
+                </Image>
+                <Label
+                    Grid.Column="1"
+                    Padding="10"
+                    FontFamily="poppinsl"
+                    FontSize="18"
+                    Text="{Binding Title}"
+                    TextColor="{AppThemeBinding Light=Black,
+                                                Dark=White}"
+                    VerticalTextAlignment="Center" />
+            </Grid>
+        </DataTemplate>
+    </Shell.ItemTemplate>
+
+</Shell>

@@ -1,0 +1,455 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="GestãoAgro.View.CattleFarmPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewModels="clr-namespace:GestaoAgro.ViewModels"
+    x:DataType="viewModels:CattleFarmViewModel"
+    BackgroundColor="{StaticResource RusticBrown}">
+    <ScrollView>
+        <Grid
+            Padding="15"
+            ColumnSpacing="15"
+            RowSpacing="15"
+            VerticalOptions="Fill">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Label
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="3"
+                Padding="25"
+                FontFamily="poppinsb"
+                FontSize="30"
+                HorizontalOptions="Center"
+                Text=" 🐄  Serviços da Agropecuária " />
+
+            <Grid
+                Grid.Row="1"
+                Grid.Column="0"
+                Grid.ColumnSpan="3"
+                RowSpacing="20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Picker
+                    x:Name="picker"
+                    Title="Selecione o tipo de animal"
+                    Grid.Row="0"
+                    FontFamily="poppinst"
+                    HorizontalOptions="Start"
+                    ItemsSource="{Binding ListAnimalAnalytics}"
+                    SelectedItem="{Binding AnimalAnalyticsSelected}"
+                    TextColor="White"
+                    TitleColor="White" />
+                <Border
+                    Grid.Row="1"
+                    Padding="2"
+                    BackgroundColor="{StaticResource White}">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="20" />
+                    </Border.StrokeShape>
+                    <Grid
+                        Padding="20"
+                        RowSpacing="10"
+                        VerticalOptions="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Padding="0,0,0,10"
+                            FontFamily="poppinsb"
+                            FontSize="16"
+                            HorizontalOptions="Start"
+                            Text=" Rebanho "
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Padding="0,0,0,10"
+                            FontFamily="poppinsb"
+                            FontSize="16"
+                            HorizontalOptions="Start"
+                            Text=" Nascimentos (% anual) "
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="2"
+                            Grid.Column="0"
+                            Padding="0,0,0,10"
+                            FontFamily="poppinsb"
+                            FontSize="16"
+                            HorizontalOptions="Start"
+                            Text=" Peso médio "
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Padding="0,0,0,10"
+                            FontFamily="poppinsb"
+                            FontSize="16"
+                            HorizontalOptions="Center"
+                            Text="{Binding TotalHerd}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Padding="0,0,0,10"
+                            FontFamily="poppinsb"
+                            FontSize="16"
+                            HorizontalOptions="Center"
+                            Text="{Binding HerdBirthRate}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            Padding="0,0,0,10"
+                            FontFamily="poppinsb"
+                            FontSize="16"
+                            HorizontalOptions="Center"
+                            Text="{Binding AverageWeight}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="2"
+                            Padding="0,0,0,10"
+                            FontFamily="poppinsb"
+                            FontSize="20"
+                            HorizontalOptions="Center"
+                            Text="{Binding AnimalIcon}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="2"
+                            Padding="0,0,0,10"
+                            FontFamily="poppinsb"
+                            FontSize="20"
+                            HorizontalOptions="Center"
+                            Text=" 📈 "
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="2"
+                            Grid.Column="2"
+                            Padding="0,0,0,10"
+                            FontFamily="poppinsb"
+                            FontSize="20"
+                            HorizontalOptions="Center"
+                            Text=" ⚖️ "
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="3"
+                            Padding="0,0,0,10"
+                            FontFamily="poppinsb"
+                            FontSize="16"
+                            HorizontalOptions="Center"
+                            Text="{Binding IndicatorIcon}"
+                            TextColor="{Binding ColorIndicatorIcon}" />
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="3"
+                            Padding="0,0,0,10"
+                            FontFamily="poppinsb"
+                            FontSize="16"
+                            HorizontalOptions="Center"
+                            Text="{Binding IndicatorIcon}"
+                            TextColor="{Binding ColorIndicatorIcon}" />
+                        <Label
+                            Grid.Row="2"
+                            Grid.Column="3"
+                            Padding="0,0,0,10"
+                            FontFamily="poppinsb"
+                            FontSize="16"
+                            HorizontalOptions="Center"
+                            Text="{Binding IndicatorIcon}"
+                            TextColor="{Binding ColorIndicatorIcon}" />
+                    </Grid>
+                </Border>
+                <Grid
+                    Grid.Row="2"
+                    Grid.ColumnSpan="3"
+                    ColumnSpacing="20">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Button
+                        BackgroundColor="{StaticResource Primary}"
+                        Command="{Binding GoToNewAnimalCommand}"
+                        FontFamily="poppinsb"
+                        FontSize="14"
+                        HorizontalOptions="Fill"
+                        Text="Cadastrar animais"
+                        TextColor="White"
+                        VerticalOptions="Fill" />
+                    <Button
+                        Grid.Column="1"
+                        BackgroundColor="{StaticResource Primary}"
+                        Command="{Binding GoToNewVaccineCommand}"
+                        FontFamily="poppinsb"
+                        FontSize="14"
+                        HorizontalOptions="Fill"
+                        Text="Atualização de peso"
+                        TextColor="White"
+                        VerticalOptions="Fill" />
+                </Grid>
+            </Grid>
+
+            <Grid Grid.Row="3" Margin="0,50,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Label
+                    Grid.Row="0"
+                    Padding="16"
+                    FontFamily="poppinsb"
+                    FontSize="16"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Text=" Útimos registros de vacinação " />
+                <Border
+                    Grid.Row="1"
+                    Padding="16"
+                    BackgroundColor="White"
+                    HeightRequest="250"
+                    StrokeShape="RoundRectangle 20">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <VerticalStackLayout>
+                            <Label
+                                Grid.Row="0"
+                                FontFamily="poppinsl"
+                                FontSize="16"
+                                HorizontalOptions="Start"
+                                Text=" • Febre aftosa "
+                                TextColor="Black" />
+                            <Label
+                                Grid.Row="0"
+                                FontFamily="poppinsl"
+                                FontSize="16"
+                                HorizontalOptions="Start"
+                                Text=" • Brucelose "
+                                TextColor="Black" />
+                            <Label
+                                Grid.Row="0"
+                                FontFamily="poppinsl"
+                                FontSize="16"
+                                HorizontalOptions="Start"
+                                Text=" • Clostridioses "
+                                TextColor="Black" />
+                        </VerticalStackLayout>
+                        <Label
+                            Grid.Row="1"
+                            FontFamily="poppinsb"
+                            FontSize="16"
+                            HorizontalOptions="Center"
+                            Text=" ver mais "
+                            TextColor="Black"
+                            VerticalOptions="Center" />
+                    </Grid>
+                </Border>
+                <Button
+                    Grid.Row="2"
+                    Margin="0,10,0,0"
+                    FontFamily="poppinsb"
+                    FontSize="14"
+                    HorizontalOptions="Center"
+                    Text="Adicionar vacina"
+                    TextColor="White" />
+            </Grid>
+
+            <!--
+            <Border
+                Grid.Row="1"
+                Grid.Column="1"
+                BackgroundColor="{AppThemeBinding Light=Black,
+                                                  Dark=White}"
+                HorizontalOptions="Start"
+                StrokeShape="RoundRectangle 20"
+                VerticalOptions="Start">
+                <StackLayout Padding="20" Spacing="10">
+                    <Label
+                        Padding="0,0,0,10"
+                        FontFamily="poppinsb"
+                        FontSize="16"
+                        HorizontalOptions="Center"
+                        Text=" 🌱 Gestão de Pasto "
+                        TextColor="{AppThemeBinding Light=White,
+                                                    Dark=Black}" />
+                    <Label
+                        Padding="20,10,20,10"
+                        FontFamily="poppinsl"
+                        FontSize="14"
+                        HorizontalOptions="Start"
+                        Text="- Rotação de pastagens"
+                        TextColor="{AppThemeBinding Light=White,
+                                                    Dark=Black}" />
+                    <Label
+                        Padding="20,10,20,10"
+                        FontFamily="poppinsl"
+                        FontSize="14"
+                        HorizontalOptions="Start"
+                        Text="- Análise de solo"
+                        TextColor="{AppThemeBinding Light=White,
+                                                    Dark=Black}" />
+                    <Label
+                        Padding="20,10,20,10"
+                        FontFamily="poppinsl"
+                        FontSize="14"
+                        HorizontalOptions="Start"
+                        Text="- Produtividade"
+                        TextColor="{AppThemeBinding Light=White,
+                                                    Dark=Black}" />
+                </StackLayout>
+            </Border>
+            <Border
+                Grid.Row="1"
+                Grid.Column="2"
+                BackgroundColor="{AppThemeBinding Light=Black,
+                                                  Dark=White}"
+                HorizontalOptions="Start"
+                StrokeShape="RoundRectangle 20"
+                VerticalOptions="Start">
+                <StackLayout Padding="20" Spacing="10">
+                    <Label
+                        Padding="0,0,0,10"
+                        FontFamily="poppinsb"
+                        FontSize="16"
+                        HorizontalOptions="Center"
+                        Text=" 📆 Agenda de Manejo "
+                        TextColor="{AppThemeBinding Light=White,
+                                                    Dark=Black}" />
+                    <Label
+                        Padding="20,10,20,10"
+                        FontFamily="poppinsl"
+                        FontSize="14"
+                        HorizontalOptions="Start"
+                        Text="- Lembretes de vacinações"
+                        TextColor="{AppThemeBinding Light=White,
+                                                    Dark=Black}" />
+                    <Label
+                        Padding="20,10,20,10"
+                        FontFamily="poppinsl"
+                        FontSize="14"
+                        HorizontalOptions="Start"
+                        Text="- Vermifugações"
+                        TextColor="{AppThemeBinding Light=White,
+                                                    Dark=Black}" />
+                    <Label
+                        Padding="20,10,20,10"
+                        FontFamily="poppinsl"
+                        FontSize="14"
+                        HorizontalOptions="Start"
+                        Text="- Inseminações"
+                        TextColor="{AppThemeBinding Light=White,
+                                                    Dark=Black}" />
+                </StackLayout>
+            </Border>
+            <Border
+                Grid.Row="2"
+                Grid.Column="0"
+                BackgroundColor="{AppThemeBinding Light=Black,
+                                                  Dark=White}"
+                HorizontalOptions="Start"
+                StrokeShape="RoundRectangle 20"
+                VerticalOptions="Start">
+                <StackLayout Padding="20" Spacing="10">
+                    <Label
+                        Padding="0,0,0,10"
+                        FontFamily="poppinsb"
+                        FontSize="16"
+                        HorizontalOptions="Center"
+                        Text=" 📈 Relatórios Zootécnicos "
+                        TextColor="{AppThemeBinding Light=White,
+                                                    Dark=Black}" />
+                    <Label
+                        Padding="20,10,20,10"
+                        FontFamily="poppinsl"
+                        FontSize="14"
+                        HorizontalOptions="Start"
+                        Text="- Desempenho dos animais"
+                        TextColor="{AppThemeBinding Light=White,
+                                                    Dark=Black}" />
+                    <Label
+                        Padding="20,10,20,10"
+                        FontFamily="poppinsl"
+                        FontSize="14"
+                        HorizontalOptions="Start"
+                        Text="- Custos de alimentação"
+                        TextColor="{AppThemeBinding Light=White,
+                                                    Dark=Black}" />
+                    <Label
+                        Padding="20,10,20,10"
+                        FontFamily="poppinsl"
+                        FontSize="14"
+                        HorizontalOptions="Start"
+                        Text="- Taxa de natalidade"
+                        TextColor="{AppThemeBinding Light=White,
+                                                    Dark=Black}" />
+                </StackLayout>
+            </Border>
+            <Border
+                Grid.Row="2"
+                Grid.Column="1"
+                BackgroundColor="{AppThemeBinding Light=Black,
+                                                  Dark=White}"
+                HorizontalOptions="Start"
+                StrokeShape="RoundRectangle 20"
+                VerticalOptions="Start">
+                <StackLayout Padding="20" Spacing="10">
+                    <Label
+                        Padding="0,0,0,10"
+                        FontFamily="poppinsb"
+                        FontSize="16"
+                        HorizontalOptions="Center"
+                        Text=" ☀️ Integração com Clima "
+                        TextColor="{AppThemeBinding Light=White,
+                                                    Dark=Black}" />
+                    <Label
+                        Padding="20,10,20,10"
+                        FontFamily="poppinsl"
+                        FontSize="14"
+                        HorizontalOptions="Start"
+                        Text="- Alertas meteorológicos"
+                        TextColor="{AppThemeBinding Light=White,
+                                                    Dark=Black}" />
+                    <Label
+                        Padding="20,10,20,10"
+                        FontFamily="poppinsl"
+                        FontSize="14"
+                        HorizontalOptions="Start"
+                        Text="- Apoio à tomada de decisão no campo "
+                        TextColor="{AppThemeBinding Light=White,
+                                                    Dark=Black}" />
+                </StackLayout>
+            </Border>-->
+        </Grid>
+    </ScrollView>
+</ContentPage>

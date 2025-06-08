@@ -1,0 +1,6 @@
+﻿<maui:MauiWinUIApplication
+    x:Class="GestãoAgro.WinUI.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:GestãoAgro.WinUI"
+    xmlns:maui="using:Microsoft.Maui" />

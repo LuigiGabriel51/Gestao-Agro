@@ -1,0 +1,445 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="GestaoAgro.View.Forms.FormNewAnimal"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:formViewModels="clr-namespace:GestaoAgro.ViewModels.Forms"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    x:DataType="formViewModels:FormNewAnimalViewModel"
+    BackgroundColor="{StaticResource RusticBrown}"
+    NavigationPage.HasBackButton="False"
+    NavigationPage.HasNavigationBar="False"
+    Shell.FlyoutBehavior="Disabled"
+    Shell.ForegroundColor="White"
+    Shell.NavBarHasShadow="False"
+    Shell.NavBarIsVisible="False">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <toolkit:InvertedBoolConverter x:Key="InvertedBoolConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <ScrollView Grid.ColumnSpan="2" VerticalScrollBarVisibility="Always">
+            <VerticalStackLayout>
+                <Label
+                    Padding="20"
+                    FontFamily="poppinsb"
+                    FontSize="30"
+                    HorizontalOptions="Center"
+                    Text="Adicionar novo Animal"
+                    VerticalOptions="Center" />
+                <Grid
+                    Padding="30"
+                    ColumnSpacing="20"
+                    RowSpacing="30">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <!--  Tipo de Animal  -->
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        FontFamily="poppinsb"
+                        FontSize="15"
+                        Text="Escolha o tipo de animal:"
+                        VerticalOptions="Center" />
+                    <Picker
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        FontFamily="poppinsl"
+                        FontSize="15"
+                        HorizontalOptions="Start"
+                        ItemsSource="{Binding ListAnimals}"
+                        SelectedItem="{Binding AnimalSelected}" />
+
+                    <!--  é criação em lote  -->
+                    <Grid
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        ColumnSpacing="20">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            FontFamily="poppinsb"
+                            FontSize="15"
+                            Text="Criação em lote?"
+                            VerticalOptions="Center" />
+                        <Switch
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            HorizontalOptions="Start"
+                            IsToggled="{Binding IsBatchCreation}"
+                            OnColor="{StaticResource AccentYellow}" />
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            FontFamily="poppinsb"
+                            FontSize="15"
+                            IsVisible="{Binding IsBatchCreation}"
+                            Text="Número de animais para adicionar:"
+                            VerticalOptions="Center" />
+                        <Entry
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            FontSize="15"
+                            HorizontalOptions="Start"
+                            IsVisible="{Binding IsBatchCreation}"
+                            Text="{Binding NumberAnimalsAdded}"
+                            TextChanged="CanConfirmTextChanged" />
+                    </Grid>
+
+                    <!--  TagNumber  -->
+                    <Label
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        FontFamily="poppinsb"
+                        FontSize="15"
+                        Text="Identificação (Tag):"
+                        VerticalOptions="Center" />
+                    <Entry
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        FontSize="15"
+                        Text="{Binding CurrentAnimal.TagNumber}"
+                        TextChanged="CanConfirmTextChanged" />
+
+                    <!--  Name  -->
+                    <Label
+                        Grid.Row="3"
+                        Grid.Column="0"
+                        FontFamily="poppinsb"
+                        FontSize="15"
+                        Text="Nome:"
+                        VerticalOptions="Center" />
+                    <Entry
+                        Grid.Row="3"
+                        Grid.Column="1"
+                        FontSize="15"
+                        Text="{Binding CurrentAnimal.Name}"
+                        TextChanged="CanConfirmTextChanged" />
+
+                    <!--  Gender  -->
+                    <Label
+                        Grid.Row="4"
+                        Grid.Column="0"
+                        FontFamily="poppinsb"
+                        FontSize="15"
+                        Text="Sexo:"
+                        VerticalOptions="Center" />
+                    <Picker
+                        Grid.Row="4"
+                        Grid.Column="1"
+                        FontSize="15"
+                        ItemsSource="{Binding GenderType}"
+                        SelectedItem="{Binding CurrentAnimal.Gender}" />
+
+                    <!--  Breed  -->
+                    <Label
+                        Grid.Row="5"
+                        Grid.Column="0"
+                        FontFamily="poppinsb"
+                        FontSize="15"
+                        Text="Raça:"
+                        VerticalOptions="Center" />
+                    <Entry
+                        Grid.Row="5"
+                        Grid.Column="1"
+                        FontSize="15"
+                        Text="{Binding CurrentAnimal.Breed}"
+                        TextChanged="CanConfirmTextChanged" />
+
+                    <!--  BirthDate  -->
+                    <Label
+                        Grid.Row="6"
+                        Grid.Column="0"
+                        FontFamily="poppinsb"
+                        FontSize="15"
+                        Text="Nascimento:"
+                        VerticalOptions="Center" />
+                    <DatePicker
+                        Grid.Row="6"
+                        Grid.Column="1"
+                        Date="{Binding CurrentAnimal.BirthDate}"
+                        FontSize="15" />
+
+                    <!--  Category  -->
+                    <Label
+                        Grid.Row="7"
+                        Grid.Column="0"
+                        FontFamily="poppinsb"
+                        FontSize="15"
+                        Text="Categoria:"
+                        VerticalOptions="Center" />
+                    <Entry
+                        Grid.Row="7"
+                        Grid.Column="1"
+                        FontSize="15"
+                        Text="{Binding CurrentAnimal.Category}" />
+
+                    <!--  CurrentWeight  -->
+                    <Label
+                        Grid.Row="8"
+                        Grid.Column="0"
+                        FontFamily="poppinsb"
+                        FontSize="15"
+                        Text="Peso (kg):"
+                        VerticalOptions="Center" />
+                    <Entry
+                        Grid.Row="8"
+                        Grid.Column="1"
+                        FontSize="15"
+                        Keyboard="Numeric"
+                        Text="{Binding CurrentAnimal.CurrentWeight}"
+                        TextChanged="CanConfirmTextChanged" />
+
+                    <!--  IsActive  -->
+                    <Label
+                        Grid.Row="9"
+                        Grid.Column="0"
+                        FontFamily="poppinsb"
+                        FontSize="15"
+                        Text="Ativo no rebanho:"
+                        VerticalOptions="Center" />
+                    <Switch
+                        Grid.Row="9"
+                        Grid.Column="1"
+                        IsToggled="{Binding CurrentAnimal.IsActive}"
+                        OnColor="{StaticResource AccentYellow}" />
+
+                    <!--  Especificos bovino  -->
+                    <Border
+                        Grid.Row="10"
+                        Grid.ColumnSpan="2"
+                        Padding="20"
+                        BackgroundColor="{StaticResource Secondary}"
+                        IsVisible="{Binding BovineSelected}"
+                        StrokeShape="RoundRectangle 20">
+                        <Grid ColumnSpacing="20" RowSpacing="20">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label
+                                Grid.Row="0"
+                                Grid.ColumnSpan="2"
+                                FontFamily="poppinsb"
+                                FontSize="20"
+                                HorizontalOptions="Center"
+                                Text="{Binding IconAnimalSelected}"
+                                VerticalOptions="Center" />
+                            <Label
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                FontFamily="poppinsb"
+                                FontSize="15"
+                                Text="O bovino é leiteiro?"
+                                VerticalOptions="Center" />
+                            <Switch
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                IsToggled="{Binding CurrentBovine.IsDairy}"
+                                OnColor="{StaticResource AccentYellow}" />
+                            <Label
+                                Grid.Row="2"
+                                Grid.Column="0"
+                                FontFamily="poppinsb"
+                                FontSize="15"
+                                Text="Produção de leite por dia (l/d)"
+                                VerticalOptions="Center" />
+                            <Entry
+                                Grid.Row="2"
+                                Grid.Column="1"
+                                FontSize="15"
+                                HorizontalOptions="Start"
+                                Text="{Binding CurrentBovine.MilkProductionPerDay}"
+                                TextColor="White" />
+                            <Label
+                                Grid.Row="3"
+                                Grid.Column="0"
+                                FontFamily="poppinsb"
+                                FontSize="15"
+                                Text="O bovino possui chifres?"
+                                VerticalOptions="Center" />
+                            <Switch
+                                Grid.Row="3"
+                                Grid.Column="1"
+                                IsToggled="{Binding CurrentBovine.IsCornado}"
+                                OnColor="{StaticResource AccentYellow}" />
+                        </Grid>
+                    </Border>
+
+                    <!--  Especificos suíno  -->
+                    <Border
+                        Grid.Row="10"
+                        Grid.ColumnSpan="2"
+                        Padding="20"
+                        BackgroundColor="{StaticResource Secondary}"
+                        IsVisible="{Binding SwineSelected}"
+                        StrokeShape="RoundRectangle 20">
+                        <Grid ColumnSpacing="20" RowSpacing="20">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label
+                                Grid.Row="0"
+                                Grid.ColumnSpan="2"
+                                FontFamily="poppinsb"
+                                FontSize="20"
+                                HorizontalOptions="Center"
+                                Text="{Binding IconAnimalSelected}"
+                                VerticalOptions="Center" />
+                            <Label
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                FontFamily="poppinsb"
+                                FontSize="15"
+                                Text="O suíno é uma matriz reprodutora?"
+                                VerticalOptions="Center" />
+                            <Switch
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                IsToggled="{Binding CurrentSwine.IsBreedingSow}"
+                                OnColor="{StaticResource AccentYellow}" />
+                        </Grid>
+                    </Border>
+
+                    <!--  Especificos caprinos  -->
+                    <Border
+                        Grid.Row="10"
+                        Grid.ColumnSpan="2"
+                        Padding="20"
+                        BackgroundColor="{StaticResource Secondary}"
+                        IsVisible="{Binding GoatsSelected}"
+                        StrokeShape="RoundRectangle 20">
+                        <Grid ColumnSpacing="20" RowSpacing="20">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label
+                                Grid.Row="0"
+                                Grid.ColumnSpan="2"
+                                FontFamily="poppinsb"
+                                FontSize="20"
+                                HorizontalOptions="Center"
+                                Text="{Binding IconAnimalSelected}"
+                                VerticalOptions="Center" />
+                            <Label
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                FontFamily="poppinsb"
+                                FontSize="15"
+                                Text="O caprino possui chifres?"
+                                VerticalOptions="Center" />
+                            <Switch
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                IsToggled="{Binding CurrentCaprine.IsHorned}"
+                                OnColor="{StaticResource AccentYellow}" />
+                            <Label
+                                Grid.Row="2"
+                                Grid.Column="0"
+                                FontFamily="poppinsb"
+                                FontSize="15"
+                                Text="Produção de leite por dia (l/d)"
+                                VerticalOptions="Center" />
+                            <Entry
+                                Grid.Row="2"
+                                Grid.Column="1"
+                                FontSize="15"
+                                HorizontalOptions="Start"
+                                HorizontalTextAlignment="Center"
+                                Text="{Binding CurrentCaprine.MilkProductionPerDay}"
+                                TextColor="White" />
+                        </Grid>
+                    </Border>
+
+                </Grid>
+            </VerticalStackLayout>
+        </ScrollView>
+        <Button
+            Grid.Row="1"
+            Grid.Column="1"
+            Margin="20"
+            BackgroundColor="{StaticResource Primary}"
+            Command="{Binding ConfirmNewAnimalCommand}"
+            FontFamily="poppinsb"
+            FontSize="16"
+            HorizontalOptions="Start"
+            IsEnabled="{Binding ConfirmNewAnimalIsEnable}"
+            Text="Adicionar Animal"
+            TextColor="White">
+            <Button.Triggers>
+                <DataTrigger
+                    Binding="{Binding ConfirmNewAnimalIsEnable}"
+                    TargetType="Button"
+                    Value="False">
+                    <Setter Property="BackgroundColor" Value="{StaticResource Gray500}" />
+                </DataTrigger>
+            </Button.Triggers>
+        </Button>
+        <Button
+            Grid.Row="1"
+            Grid.Column="0"
+            Margin="20"
+            BackgroundColor="Red"
+            Clicked="Button_Clicked"
+            FontFamily="poppinsb"
+            FontSize="16"
+            HorizontalOptions="End"
+            Text="Cancelar"
+            TextColor="White" />
+    </Grid>
+
+</ContentPage>
